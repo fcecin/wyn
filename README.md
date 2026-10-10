@@ -25,12 +25,15 @@ WYN favors these explicit processes over built-in subagents.
 | Need | WYN's approach |
 | --- | --- |
 | A missing tool | Find, download, build, compose, or write what the task needs. |
+| A language choice | Use the available language that best fits the task and project. |
+| Reusable tooling | Keep projects under `~/wyn/` and maintain its local README index. |
 | A bounded AI assignment | Use `claude -p` or `codex exec`. |
 | An ongoing AI conversation | Run Claude Code or Codex in tmux; observe, prompt, verify, and continue. |
 | Affordable execution | Use an economical doing model; move up one tier for hard work. |
 | Reliable verification | Use a stronger model for a bounded review of the consolidated result. |
 | Difficult reasoning | Tune reasoning effort separately from model tier. |
 | Clear progress | Report `WYN:` plus the action and relevant paths. |
+| A mature tool worth sharing | Offer GitHub publication through `gh`, then maintain the published project. |
 
 The intended model split is Luna/Haiku doing, an intermediate GPT model/Sonnet
 when needed, and Sol/Opus checking. These are user-suggested roles, not fixed
@@ -40,11 +43,48 @@ Worker counts, attempts, and review rounds stay bounded.
 Example progress report:
 
 ```text
-WYN: Creating tools/convert.py to process input/ and write converted files to output/.
+WYN: Creating ~/wyn/file-converter/convert.py and indexing its usage in ~/wyn/README.md.
 ```
 
 Full instructions are in [SKILL.md](skills/wyn/SKILL.md).
 [Worker examples](skills/wyn/references/cli-workers.md) cover both CLIs and tmux.
+
+## A home for your tools
+
+WYN prefers a shared tooling directory:
+
+```text
+~/wyn/
+  README.md              This machine's tooling index
+  wyn/                   This skill's repository
+  file-converter/        A reusable WYN project
+  another-tool/          Another project
+```
+
+The index tells the next agent what exists, where it lives, how to run and test
+it, and whether it is published. Each project has its own README with setup,
+usage, checks, and relevant language choices. Existing checkouts can be linked
+or indexed in place; a user-selected tooling root takes precedence.
+
+When several languages are available, choose for the task: libraries,
+correctness, performance, integration, deployment, and maintenance all count.
+A familiar language is useful, but it need not win every assignment.
+
+## Share useful work, then maintain it
+
+When a tool is mature, tested, documented, and useful to others, WYN checks for
+an authenticated `gh` and offers a concrete GitHub publication proposal. The
+user decides on first publication and its scope.
+
+Published projects record their repository in the local tooling index and in
+their own README and maintenance record. Later changes include relevant checks,
+documentation updates, and synchronization under the recorded authorization.
+Pending or blocked synchronization is reported. The local machine's index stays
+local; only the selected project is published.
+
+This project is published at **[fcecin/wyn](https://github.com/fcecin/wyn)**.
+Its update workflow is in [PUBLISHING.md](PUBLISHING.md). The reusable procedure
+is in [project organization and publication](skills/wyn/references/projects.md).
 
 ## Install
 
@@ -67,15 +107,16 @@ Requires Git, Bash, and Python 3.8 or later. The installer uses no Python packag
 outside the standard library and needs no sudo.
 
 ```sh
-git clone https://github.com/fcecin/wyn.git ~/wyn
-~/wyn/install.sh --claude
+mkdir -p ~/wyn
+git clone https://github.com/fcecin/wyn.git ~/wyn/wyn
+~/wyn/wyn/install.sh --claude
 ```
 
 For Codex, or both agents:
 
 ```sh
-~/wyn/install.sh --codex
-~/wyn/install.sh --all
+~/wyn/wyn/install.sh --codex
+~/wyn/wyn/install.sh --all
 ```
 
 Choose the command for your setup. With no host option, the installer targets
@@ -88,7 +129,13 @@ Claude Code, matching [BOINK's](https://github.com/fcecin/claude-boink) conventi
 
 The activation block is a short pointer and reminder. The full skill stays in
 `skills/wyn/SKILL.md` and loads when needed. Keep the checkout in place: the
-global entries link to it. Start a new session if WYN is not listed yet.
+global entries link to it. Start a new session if WYN is not listed yet. When an
+agent installs WYN, it also registers the checkout in the tooling index. The
+installer itself changes only skill links and activation blocks.
+
+If an older installation already uses `~/wyn` as the skill repository, keep it
+working and inspect the layout before changing it. Do not replace its repository
+README with a machine index. See the [layout guidance](skills/wyn/references/projects.md).
 
 ```text
 install.sh [install|status|uninstall] [--claude|--codex|--all] [--no-instructions]
@@ -149,12 +196,14 @@ Edit [skills/wyn/SKILL.md](skills/wyn/SKILL.md). Supporting files:
 
 ```text
 install.sh                         Repository installer entrypoint
+PUBLISHING.md                      Published repository and maintenance policy
 skills/wyn/
   SKILL.md                         Shared instructions
   scripts/install.py               Standalone installer
   references/
     install.md                     Agent installation workflow
     cli-workers.md                 Claude Code, Codex, and tmux examples
+    projects.md                    Tooling index and publication lifecycle
     claude-md-block.md             Claude activation template
     codex-md-block.md              Codex activation template
 tests/test_install.py              Installer lifecycle checks

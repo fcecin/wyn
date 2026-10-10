@@ -10,7 +10,7 @@ Either agent can act as coordinator through its available shell tools. It can la
 | Single request | `claude -p 'Read BRIEF.md and complete the assignment.'` | `codex exec 'Read BRIEF.md and complete the assignment.'` |
 | Resume a specific saved conversation | `claude --resume SESSION_ID` | `codex resume SESSION_ID` |
 
-Run in the worker's workspace. For a one-shot call, capture stdout, stderr, and the exit status. For concurrent conversations, record explicit session IDs; a "most recent" shortcut can select the wrong worker. Resume only after determining that the intended conversation is no longer active.
+Run in the worker's workspace, normally under the owning WYN project in `~/wyn/`, or in an isolated working copy recorded by that project. For a one-shot call, capture stdout, stderr, and the exit status. For concurrent conversations, record explicit session IDs; a "most recent" shortcut can select the wrong worker. Resume only after determining that the intended conversation is no longer active.
 
 These mappings follow the [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference) and [Codex CLI reference](https://learn.chatgpt.com/docs/cli/reference). Check local `--help` for version-specific options. In particular, Claude's `-p` means print mode, while Codex's `-p` selects a profile; use `codex exec` for non-interactive work.
 

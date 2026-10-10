@@ -1,6 +1,6 @@
 ---
 name: wyn
-description: Build, obtain, assemble, and integrate tools needed to complete a task more effectively. Use for missing dependencies, installs that appear to require sudo, capability gaps, repetitive work, unreliable verification, or coordinating CLI AI workers and choosing economical models. Also use when the user invokes What You Need (WYN) or asks to install, update, inspect, or uninstall WYN itself.
+description: Build, obtain, assemble, and maintain tools needed to complete a task more effectively. Use for missing dependencies, installs that appear to require sudo, capability gaps, repetitive work, unreliable verification, CLI AI workers, or maintaining and sharing WYN tooling. Also use when the user invokes What You Need (WYN) or asks to install, update, inspect, or uninstall WYN itself.
 ---
 
 # What You Need (WYN)
@@ -21,9 +21,9 @@ Report when you begin a meaningful tooling or worker strategy and when that appr
 
 Examples:
 
-- `WYN: Creating tools/convert.py to process input/ and write converted files to output/.`
-- `WYN: Using an economical worker in scratch/worker-1/ to implement the fix, then a stronger model to write scratch/review.md.`
-- `WYN: Increasing the worker's reasoning effort to address failures recorded in scratch/worker-1/tests.log.`
+- `WYN: Creating ~/wyn/file-converter/convert.py and indexing its usage in ~/wyn/README.md.`
+- `WYN: Using an economical worker in ~/wyn/file-converter/scratch/worker-1/ to implement the fix, then a stronger model to write its review.`
+- `WYN: Increasing the worker's reasoning effort to address failures recorded in ~/wyn/file-converter/scratch/tests.log.`
 
 Keep reporting with the coordinator so worker chatter does not flood the user's output. In the final report, give the locations of useful retained tools and artifacts, using clickable file links when supported.
 
@@ -46,6 +46,18 @@ Identify the concrete capability you need and how it will help complete the task
 Choose the smallest useful implementation whose expected benefit justifies the time, dependencies, and maintenance it introduces. A short script may be enough; a larger tool may be justified when the task requires it. If direct work is simpler and reliable, proceed directly.
 
 Use tools available in the host environment to create and run your solution. Do not assume a particular agent's tool names, shell, runtime, network access, or integrations are present. When a dependency is missing, use an available alternative or install it where that is supported and authorized.
+
+### Choose the language for the job
+
+When more than one programming language is available, choose the one best suited to the actual work. Weigh the project's existing language, available libraries, correctness, performance, deployment, interoperability, and maintenance. A shell command may suit simple orchestration; structured data or complex error handling may call for another language. Avoid defaulting to whichever language you used last, forcing everything into shell, or introducing a new runtime without a concrete benefit. Briefly explain a consequential language choice in the project README.
+
+## Keep a shared tooling home
+
+Prefer `~/wyn/<project-name>/` for durable WYN projects and `~/wyn/README.md` as the local machine's tooling index. Read the index before creating another tool, and reuse or extend an existing project when it fits. Use an established user-selected tooling root if one exists. `~/wyn` is in the user's home directory; do not assume `/wyn` at the filesystem root.
+
+Keep the index and each project's README current as you create, change, move, or retire tools. Record what the tool does, its location, language/runtime, setup and usage, verification, maturity, and publication state. Keep one canonical project; link or index existing work in place when moving it would disrupt a repository or installation. Task-specific code that belongs in the user's target project can stay there and be indexed if useful. Disposable helpers do not need promotion into permanent projects.
+
+When creating or maintaining a durable project, read [project organization and publication](references/projects.md) for the index and publication records. A future agent should be able to read `~/wyn/README.md`, find the right project, and operate it without reconstructing earlier conversations.
 
 ## A system install is only one route
 
@@ -122,9 +134,17 @@ Optimize for the cost of a correct completed task, including retries, reasoning 
 
 Build the tool, check that it works on representative inputs, and use it on the actual task. Check outputs against independent evidence when practical, especially before applying a tool to many items or making consequential changes. Match validation effort to the effects of a failure.
 
-Integrate the tool where it will actually be used. Keep disposable helpers in a suitable temporary location. Preserve tools that belong in the deliverable or will be useful again in an appropriate project location, with enough usage information to run them. Avoid adding a permanent framework for a one-off need.
+Integrate the tool where it will actually be used. Keep disposable helpers in a suitable temporary location. Keep reusable WYN projects in the shared tooling home and update its index; keep code that belongs in the user's deliverable in that deliverable. Supply enough usage information to run the tool. Avoid adding a permanent framework for a one-off need.
 
 If an approach fails, use the failure to revise it. When tooling costs exceed its benefit, simplify or switch approaches. Tool creation is a means of completing the user's objective; return to that objective as soon as the capability is usable.
+
+## Offer mature tools for publication and maintain them
+
+When a WYN project is useful beyond the original task, tested, documented, and mature enough to share, check whether `gh` is available and authenticated. If so, prepare a concrete publication proposal and offer to publish it on GitHub. Include the candidate project, value, validation, proposed repository and visibility, and what would be shared. Follow existing publication authorization; do not treat tool creation itself as permission for first publication or repeat a declined offer without a material reason.
+
+Once publication is authorized, use `gh` to create or select the repository and publish the prepared project. Record that it is published and its repository URL both in `~/wyn/README.md` and inside the project, with a maintenance record such as `PUBLISHING.md`. Follow the workflow in [project organization and publication](references/projects.md).
+
+Treat publication as an ongoing maintenance obligation. When changing a published project, update its docs and relevant checks, then synchronize the authorized changes to GitHub within the user's publication scope. Reuse standing authorization for routine maintenance. Verify the remote result and update the local index; if synchronization is blocked or outside the recorded authorization, state that it is pending and why. Do not silently leave the public version stale or claim synchronization without checking. This is part of completing changes, not a reason to create unattended maintenance jobs.
 
 ## Keep initiative within scope
 
