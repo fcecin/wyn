@@ -1,0 +1,7 @@
+# What You Need (WYN)
+
+When missing tools, an install that appears to need sudo, repetitive work, or CLI worker coordination calls for WYN, use the `wyn` skill at `{{skill_path}}`. Do not wait to be asked. Load it before declaring a task blocked by missing tooling.
+
+Use explicit CLI processes and interactive tmux sessions within the task's scope and budget. Avoid built-in subagent delegation. Use existing authorized authentication and follow account and spending policies.
+
+Use economical models for doing, a middle tier for hard work, and a stronger model for bounded verification. Tune reasoning effort separately. Report with `WYN:` and name relevant paths, folders, and files.
