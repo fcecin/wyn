@@ -1,11 +1,13 @@
 ---
 name: wyn
-description: Build, obtain, assemble, and maintain tools needed to complete a task more effectively. Use for missing dependencies, installs that appear to require sudo, capability gaps, repetitive work, unreliable verification, CLI AI workers, or maintaining and sharing WYN tooling. Also use when the user invokes What You Need (WYN) or asks to install, update, inspect, or uninstall WYN itself.
+description: Improve tool choice throughout a task by considering whether a better tool would make the next action faster, more efficient, or more reliable. Reuse existing WYN capabilities, obtain tools, or build what is needed. Use proactively when choosing how to work, as well as for missing tools, repetitive work, CLI workers, and managing WYN itself.
 ---
 
 # What You Need (WYN)
 
-You can make the tools you need. Treat the available toolset as a starting point: use your ability to write code, compose existing programs, and integrate available libraries or services to improve how you accomplish the user's task.
+Before acting, briefly ask yourself: would a better tool make this job faster, more efficient, or produce a better result? Keep that question active throughout the task, even when the current approach works. Treat the available toolset as a starting point. Switch to a suitable existing capability, including tools already indexed by WYN, or obtain, adapt, compose, or build what would help.
+
+This is a lightweight background habit. Use what you already know about available tools, and investigate when there is a plausible benefit. Reconsider as the work changes or new evidence appears; do not repeat the same search before every command. Report meaningful changes in approach, not every internal check.
 
 Within the task's authorized scope, you have permission to create and use supporting tools. Exercise that initiative without asking the user to design your tooling or approve routine implementation choices. Work within the capabilities and permissions of your environment; this skill does not grant additional access or authority.
 
@@ -27,10 +29,13 @@ Examples:
 
 Keep reporting with the coordinator so worker chatter does not flood the user's output. In the final report, give the locations of useful retained tools and artifacts, using clickable file links when supported.
 
-## Recognize the opportunity
+## Keep asking what would help
 
-When work becomes repetitive, opaque, error-prone, or blocked by a missing capability, consider whether a tool would help. Examples include:
+For the action ahead, consider the capability it needs and whether your current tool is a good fit. Look for opportunities to improve speed, resource use, result quality, or feedback before friction becomes a blocker. Repetitive, opaque, error-prone, or blocked work is a strong signal to reconsider, but a working approach can still benefit from a better tool.
 
+Use the known tooling inventory and consult `~/wyn/README.md` when a relevant WYN capability might already exist. Switch to an existing tool when it fits; otherwise consider obtaining, adapting, composing, or building one. Examples include:
+
+- An existing WYN tool that handles the next job better than the current method.
 - A parser or converter for data that existing tools cannot consume.
 - A script that batches repetitive operations or connects several existing tools.
 - A small viewer, simulator, or diagnostic that makes behavior easier to inspect.
@@ -41,9 +46,9 @@ The absence of a dedicated tool does not by itself mean you cannot perform the t
 
 ## Build what earns its cost
 
-Identify the concrete capability you need and how it will help complete the task. Briefly inspect relevant existing tools and project conventions, then choose whether to reuse, compose, adapt, or build from scratch.
+Identify the concrete capability you need and how it will help complete the task. Briefly inspect relevant existing tools and project conventions, then choose whether to reuse, obtain, compose, adapt, or build from scratch.
 
-Choose the smallest useful implementation whose expected benefit justifies the time, dependencies, and maintenance it introduces. A short script may be enough; a larger tool may be justified when the task requires it. If direct work is simpler and reliable, proceed directly.
+Choose the smallest useful improvement whose expected benefit justifies discovery, setup, switching, implementation, and maintenance costs. A short script may be enough; a larger tool may be justified when the task requires it. If the current tool or direct work is already a good fit, proceed. Keep the check brief for small actions and investigate more when scale, difficulty, or consequences justify it.
 
 Use tools available in the host environment to create and run your solution. Do not assume a particular agent's tool names, shell, runtime, network access, or integrations are present. When a dependency is missing, use an available alternative or install it where that is supported and authorized.
 

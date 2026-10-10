@@ -1,15 +1,27 @@
 # What You Need (WYN)
 
-**You can make the tools you need.**
+**Before acting, ask whether a better tool would help.**
 
 A portable agent skill for Claude Code, Codex, and other agents that support
 [Agent Skills](https://agentskills.io/specification).
 
-WYN reminds agents they can write software, download a local binary, build from
-source, connect existing tools, or drive another AI session to get the job done.
-It also tells them to keep the AI budget under control.
+WYN keeps tool choice active throughout a task: could the next job be faster,
+more efficient, or produce a better result with a different tool? Agents should
+reuse or switch to existing capabilities, including tools in the WYN index,
+or obtain, adapt, compose, or build what they need.
+
+That question stays in the background even when the current approach works.
+Keep the check lightweight, use what is already known, and investigate when
+the likely benefit earns the cost. Report meaningful changes in approach.
 
 ## Why
+
+The tool an agent starts with may not be the best tool for each job ahead.
+An indexed converter may replace manual edits; a batch operation may save
+repeated calls; a better checker may reveal mistakes earlier. WYN asks agents
+to notice those opportunities before they become problems.
+
+Missing tools are one case:
 
 > “I need sudo to install xyz.”
 
@@ -24,6 +36,8 @@ WYN favors these explicit processes over built-in subagents.
 
 | Need | WYN's approach |
 | --- | --- |
+| Choosing the next action | Briefly consider whether a better tool would improve speed, efficiency, or results. |
+| A capability WYN already has | Consult the tooling index and use or switch to the relevant tool. |
 | A missing tool | Find, download, build, compose, or write what the task needs. |
 | A language choice | Use the available language that best fits the task and project. |
 | Reusable tooling | Keep projects under `~/wyn/` and maintain its local README index. |
