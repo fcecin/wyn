@@ -46,7 +46,7 @@ WYN favors these explicit processes over built-in subagents.
 | Affordable execution | Use an economical doing model; move up one tier for hard work. |
 | Reliable verification | Use a stronger model for a bounded review of the consolidated result. |
 | Difficult reasoning | Tune reasoning effort separately from model tier. |
-| Clear progress | Report `WYN:` plus the action and relevant paths. |
+| Reporting WYN work | Use `WYN:` for concrete use, creation, adaptation, or maintenance of a WYN tool or project. Name its path. Do not prefix routine tool-choice checks or ordinary CLI use. |
 | A mature tool worth sharing | Offer GitHub publication through `gh`, then maintain the published project. |
 
 The intended model split is Luna/Haiku doing, an intermediate GPT model/Sonnet

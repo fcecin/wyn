@@ -6,6 +6,6 @@ Use the `wyn` skill at `{{skill_path}}` when applying this approach. Do not wait
 
 Use explicit CLI processes and interactive tmux sessions within the task's scope and budget. Avoid built-in subagent delegation. Use existing authorized authentication and follow account and spending policies.
 
-Use economical models for doing, a middle tier for hard work, and a stronger model for bounded verification. Tune reasoning effort separately. Report with `WYN:` and name relevant paths, folders, and files.
+Use economical models for doing, a middle tier for hard work, and a stronger model for bounded verification. Tune reasoning effort separately. Use `WYN:` only for concrete use, creation, adaptation, or maintenance of WYN tools or projects; name their real paths. Do not prefix routine tool-choice checks or ordinary CLI use.
 
 Choose a suitable language for the task. Read `~/wyn/README.md` before creating reusable tooling, prefer projects under `~/wyn/`, and keep the index current. Offer mature tools for publication and maintain published projects according to their recorded authorization.

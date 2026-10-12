@@ -13,21 +13,19 @@ Within the task's authorized scope, you have permission to create and use suppor
 
 When asked to install or manage WYN itself, read [installation instructions](references/install.md) and use the bundled installer. It supports Claude Code and Codex, including when this skill is distributed without the rest of its repository.
 
-## Report the approach
+## Report WYN work
 
-When applying WYN, give brief user-visible progress updates prefixed exactly `WYN: `.
+Use the `WYN: ` prefix only when you use, create, adapt, or maintain a concrete WYN tool or project, or when you materially change a WYN worker workflow. Name the actual tool, project, or artifact path so the user can find it. Describe its status accurately as planned, in progress, or verified.
 
-Describe what you are doing at a higher level and how it serves the user's task. Include the relevant paths, folder names, and filenames so the user can locate the tools, worker workspaces, and results. Use workspace-relative paths when unambiguous and absolute paths for locations elsewhere. Name the actual locations selected for the task; do not invent paths or imply a planned file already exists.
+Do not send a `WYN:` update just because you considered whether another tool might help, used an ordinary CLI or application, or followed this skill's lightweight tool-choice habit. Keep ordinary task progress updates unprefixed. Skip a WYN update when there is no concrete WYN work to report. In the final answer, mention WYN tooling only when it helps the user understand or reuse the result.
 
-Report when you begin a meaningful tooling or worker strategy and when that approach materially changes. Keep these updates concise; avoid narrating every command, poll, or internal step. Describe actions as planned, in progress, or verified according to their actual state.
+Keep WYN updates concise. Do not narrate every command, poll, or internal check.
 
 Examples:
 
 - `WYN: Creating ~/wyn/file-converter/convert.py and indexing its usage in ~/wyn/README.md.`
-- `WYN: Using an economical worker in ~/wyn/file-converter/scratch/worker-1/ to implement the fix, then a stronger model to write its review.`
-- `WYN: Increasing the worker's reasoning effort to address failures recorded in ~/wyn/file-converter/scratch/tests.log.`
-
-Keep reporting with the coordinator so worker chatter does not flood the user's output. In the final report, give the locations of useful retained tools and artifacts, using clickable file links when supported.
+- `WYN: Running the existing ~/wyn/file-converter/convert.py against the provided files.`
+- `WYN: Updating the WYN worker workflow in ~/wyn/wyn/skills/wyn/SKILL.md.`
 
 ## Keep asking what would help
 
